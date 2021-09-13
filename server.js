@@ -33,6 +33,8 @@ app.get('/:room', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+    console.log("connection >>>>>>>>>>>>");
+
     socket.on('join-room', (roomId, userId, userName) => {
         socket.join(roomId);
         socket.to(roomId).adapter.emit('user-connected', userId);
